@@ -1,57 +1,85 @@
-#import requests
 import streamlit as st
 import pickle
 import pandas as pd
 
-# def fetch_poster(movie_id):
-#     response = requests.get("https://api.themoviedb.org/3/movie/{}?api_key={}&language=en-US".format(movie_id))
-#     data = response.json()
-#     return "https://image.tmdb.org/t/p/w500/"+data['poster_path']
+# Load data
+movies_dict = pickle.load(open('movies_dict.pkl', 'rb'))
+movies = pd.DataFrame(movies_dict)
+similarity = pickle.load(open('similarity.pkl', 'rb'))
 
+# Recommend function
 def recommend(movie):
     movie_index = movies[movies['title'] == movie].index[0]
     distances = similarity[movie_index]
-    movies_list = sorted(list(enumerate(distances)),reverse=True, key=lambda x: x[1])[1:6]
+    movies_list = sorted(list(enumerate(distances)), reverse=True, key=lambda x: x[1])[1:6]
 
-    recommended_movies=[]
-    #recommended_movies_poster=[]
+    recommended_movies = []
     for i in movies_list:
-        #movie_id = movies.iloc[i[0]].movie_id
         recommended_movies.append(movies.iloc[i[0]].title)
-        # fetch poster from API
-        #recommended_movies_poster.append(fetch_poster(movie_id))
-    return recommended_movies #recommended_movies_poster
 
-movies_dict = pickle.load(open('movies_dict.pkl','rb'))
-movies = pd.DataFrame(movies_dict)
+    return recommended_movies
 
-similarity = pickle.load(open('similarity.pkl','rb'))
 
-st.title('Movie Recommender System')
+# --- FRONTEND STARTS HERE ---
+st.set_page_config(page_title="🎬 Movie Recommender", page_icon="🍿", layout="wide")
 
-selected_movie_name = st.selectbox(
-    'Select a movie',
-    movies['title'].values
+st.markdown(
+    """
+    <style>
+    .main-title {
+        font-size: 48px;
+        font-weight: bold;
+        text-align: center;
+        color: #FF4B4B;
+        margin-bottom: 10px;
+    }
+    .sub-title {
+        text-align: center;
+        font-size: 20px;
+        color: #666;
+        margin-bottom: 40px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
 )
 
-if st.button('Recommend'):
+st.markdown('<div class="main-title">🎬 Movie Recommender System</div>', unsafe_allow_html=True)
+st.markdown('<div class="sub-title">Get personalized movie suggestions instantly 🍿</div>', unsafe_allow_html=True)
+
+# Dropdown in center
+col1, col2, col3 = st.columns([1, 2, 1])
+with col2:
+    selected_movie_name = st.selectbox("Pick a movie to get recommendations:", movies['title'].values)
+
+# Recommend button
+center = st.columns([2, 1, 2])
+with center[1]:
+    recommend_button = st.button("✨ Recommend Movies")
+
+# Show recommendations
+if recommend_button:
     names = recommend(selected_movie_name)
-    for name in names:
-        st.write(name)
-    #names, posters = recommend(selected_movie_name)
-    # col1, col2, col3, col4, col5 = st.columns(5)
-    # with col1:
-    #     st.text(names[0])
-    #     st.image(posters[0])
-    # with col2:
-    #     st.text(names[1])
-    #     st.image(posters[1])
-    # with col3:
-    #     st.text(names[2])
-    #     st.image(posters[2])
-    # with col4:
-    #     st.text(names[3])
-    #     st.image(posters[3])
-    # with col5:
-    #     st.text(names[4])
-    #     st.image(posters[4])
+
+    st.subheader("Here are your top picks 👇")
+    st.write("---")
+
+    # Display movies in nice cards
+    cols = st.columns(3)
+    for idx, name in enumerate(names):
+        with cols[idx % 3]:
+            st.markdown(
+                f"""
+                <div style="
+                    background: #f9f9f9;
+                    padding: 20px;
+                    border-radius: 15px;
+                    text-align: center;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                    margin-bottom: 20px;">
+                    <h4 style="color:#333;">{name}</h4>
+                    <p style="color:#888;">Recommended for you 🍿</p>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
