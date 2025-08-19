@@ -11,9 +11,9 @@ Built with Python, NLP techniques (CountVectorizer + Cosine Similarity), and Str
 6. Interactive Streamlit frontend
 
 # 📂 Project Structure
-├── app.py              # Streamlit frontend<br>
-├── model.ipynb         # Jupyter Notebook - training & preprocessing<br>
-├── similarity.pkl      # Precomputed similarity matrix (pickle file)<br>
+├── app.py&nbsp&nbsp&nbsp# Streamlit frontend<br>
+├── model.ipynb&nbsp&nbsp# Jupyter Notebook - training & preprocessing<br>
+├── similarity.pkl&nbsp&nbsp# Precomputed similarity matrix (pickle file)<br>
 ├── movies.pkl          # Preprocessed movies dataframe (pickle file)<br>
 ├── requirements.txt    # Python dependencies<br>
 └── README.md
