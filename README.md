@@ -10,37 +10,11 @@ Built with Python, NLP techniques (CountVectorizer + Cosine Similarity), and Str
 5. Cosine Similarity for recommendation logic
 6. Interactive Streamlit frontend
 
-# 📂 Project Structure
-├── app.py              # Streamlit frontend<br>
-├── model.ipynb         # Jupyter Notebook - training & preprocessing<br>
-├── similarity.pkl      # Precomputed similarity matrix (pickle file)<br>
-├── movies.pkl          # Preprocessed movies dataframe (pickle file)<br>
-├── requirements.txt    # Python dependencies<br>
-└── README.md
-
-# ⚙️ Installation & Setup
-1. Clone the repository<br>
-  git clone https://github.com/your-username/movie-recommender.git<br>
-  cd movie-recommender<br>
-
-2. Create a virtual environment (recommended)
-  python -m venv venv<br>
-  source venv/bin/activate   # On Mac/Linux<br>
-  venv\Scripts\activate      # On Windows<br>
-
-3. Install dependencies
-  pip install -r requirements.txt<br>
-
-4. Download the dataset
-  Get the TMDB 5000 Movie Dataset from Kaggle<br>
-  Place the dataset CSV files in a folder named dataset/<br>
-
-# 🚀 Running the Project
-1. Run Jupyter Notebook (training & preprocessing)<br>
-  jupyter notebook<br>
-  Open model.ipynb<br>
-  Run all cells to generate movies.pkl and similarity.pkl
-
-2. Run the Streamlit App
-  streamlit run app.py
-  The app will open in your browser (usually at http://localhost:8501)
+# 📦 Requirements
+Main libraries used:
+1. pandas
+2. numpy
+3. scikit-learn
+4. streamlit
+5. pickle<br>
+(Full list in requirements.txt)
