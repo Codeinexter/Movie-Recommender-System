@@ -11,34 +11,34 @@ Built with Python, NLP techniques (CountVectorizer + Cosine Similarity), and Str
 6. Interactive Streamlit frontend
 
 # 📂 Project Structure
-├── app.py&nbsp&nbsp&nbsp# Streamlit frontend<br>
-├── model.ipynb&nbsp&nbsp# Jupyter Notebook - training & preprocessing<br>
-├── similarity.pkl&nbsp&nbsp# Precomputed similarity matrix (pickle file)<br>
+├── app.py              # Streamlit frontend<br>
+├── model.ipynb         # Jupyter Notebook - training & preprocessing<br>
+├── similarity.pkl      # Precomputed similarity matrix (pickle file)<br>
 ├── movies.pkl          # Preprocessed movies dataframe (pickle file)<br>
 ├── requirements.txt    # Python dependencies<br>
 └── README.md
 
 # ⚙️ Installation & Setup
-1. Clone the repository
-  git clone https://github.com/your-username/movie-recommender.git
-  cd movie-recommender
+1. Clone the repository<br>
+  git clone https://github.com/your-username/movie-recommender.git<br>
+  cd movie-recommender<br>
 
 2. Create a virtual environment (recommended)
-  python -m venv venv
-  source venv/bin/activate   # On Mac/Linux
-  venv\Scripts\activate      # On Windows
+  python -m venv venv<br>
+  source venv/bin/activate   # On Mac/Linux<br>
+  venv\Scripts\activate      # On Windows<br>
 
 3. Install dependencies
-  pip install -r requirements.txt
+  pip install -r requirements.txt<br>
 
 4. Download the dataset
-  Get the TMDB 5000 Movie Dataset from Kaggle
-  Place the dataset CSV files in a folder named dataset/
+  Get the TMDB 5000 Movie Dataset from Kaggle<br>
+  Place the dataset CSV files in a folder named dataset/<br>
 
 # 🚀 Running the Project
-1. Run Jupyter Notebook (training & preprocessing)
-  jupyter notebook
-  Open model.ipynb
+1. Run Jupyter Notebook (training & preprocessing)<br>
+  jupyter notebook<br>
+  Open model.ipynb<br>
   Run all cells to generate movies.pkl and similarity.pkl
 
 2. Run the Streamlit App
