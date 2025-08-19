@@ -11,10 +11,9 @@ Built with Python, NLP techniques (CountVectorizer + Cosine Similarity), and Str
 6. Interactive Streamlit frontend
 
 # 📦 Requirements
-Main libraries used:
+Main libraries used:<br>
 1. pandas
 2. numpy
 3. scikit-learn
 4. streamlit
-5. pickle<br>
-(Full list in requirements.txt)
+5. pickle
